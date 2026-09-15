@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Smart Parking</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #222;
+}
+
+/* Header */
+header {
+    background: #0d47a1;
+    color: white;
+    padding: 22px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 32px;
+}
+
+header p {
+    margin-top: 6px;
+    font-size: 15px;
+}
+
+/* Main */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 25px;
+}
+
+/* Summary */
+.summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+.card h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.card .number {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.total .number {
+    color: #0d47a1;
+}
+
+.occupied .number {
+    color: #e53935;
+}
+
+.available .number {
+    color: #2e7d32;
+}
+
+/* Parking */
+h2.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.slots {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.slot {
+    background: white;
+    padding: 18px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+.slot h3 {
+    margin-bottom: 12px;
+}
+
+/* Circle */
+.circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    background: green;
+}
+
+/* Status */
+.status {
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+.empty {
+    color: green;
+}
+
+.occupied-text {
+    color: red;
+}
+
+/* Legend */
+.legend {
+    text-align: center;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.legend span {
+    margin: 0 12px;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+/* Footer */
+footer {
+    margin-top: 35px;
+    padding: 18px;
+    text-align: center;
+    background: #0d47a1;
+    color: white;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+    .summary {
+        grid-template-columns: 1fr;
+    }
+
+    .slots {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    .circle {
+        width: 70px;
+        height: 70px;
+        font-size: 11px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🚗 SMART PARKING</h1>
+    <p>IoT Based Smart Parking System</p>
+</header>
+
+<div class="container">
+
+    <!-- Summary -->
+    <div class="summary">
+
+        <div class="card total">
+            <h2>Total Parking</h2>
+            <div class="number" id="total">8</div>
+        </div>
+
+        <div class="card occupied">
+            <h2>Occupied</h2>
+            <div class="number" id="occupied">0</div>
+        </div>
+
+        <div class="card available">
+            <h2>Available</h2>
+            <div class="number" id="available">8</div>
+        </div>
+
+    </div>
+
+    <h2 class="title">Parking Slots</h2>
+
+    <!-- Parking Slots -->
+    <div class="slots">
+
+        <div class="slot">
+            <h3>Slot 1</h3>
+            <div class="circle" id="circle1">EMPTY</div>
+            <div class="status empty" id="status1">Available</div>
+        </div>
+
+        <div class="slot">
+            <h3>Slot 2</h3>
+            <div class="circle" id="circle2">EMPTY</div>
+            <div class="status empty" id="status2">Available</div>
+        </div>
+
+        <div class="slot">
+            <h3>Slot 3</h3>
+            <div class="circle" id="circle3">EMPTY</div>
+            <div class="status empty" id="status3">Available</div>
+        </div>
+
+        <div class="slot">
+            <h3>Slot 4</h3>
+            <div class="circle" id="circle4">EMPTY</div>
+            <div class="status empty" id="status4">Available</div>
+        </div>
+
+        <div class="slot">
+            <h3>Slot 5</h3>
+            <div class="circle" id="circle5">EMPTY</div>
+            <div class="status empty" id="status5">Available</div>
+        </div>
+
+        <div class="slot">
+            <h3>Slot 6</h3>
+            <div class="circle" id="circle6">EMPTY</div>
+            <div class="status empty" id="status6">Available</div>
+        </div>
+
+        <div class="slot">
+            <h3>Slot 7</h3>
+            <div class="circle" id="circle7">EMPTY</div>
+            <div class="status empty" id="status7">Available</div>
+        </div>
+
+        <div class="slot">
+            <h3>Slot 8</h3>
+            <div class="circle" id="circle8">EMPTY</div>
+            <div class="status empty" id="status8">Available</div>
+        </div>
+
+    </div>
+
+    <!-- Legend -->
+    <div class="legend">
+        <span class="green">🟢 EMPTY</span>
+        <span class="red">🔴 OCCUPIED</span>
+    </div>
+
+</div>
+
+<footer>
+    Smart Parking System | IoT Project
+</footer>
+
+
+<script>
+
+/*
+   DEMO DATA
+
+   0 = EMPTY
+   1 = OCCUPIED
+
+   Later ESP32/ThingSpeak data
+   will replace this data.
+*/
+
+let parkingData = [
+    0,  // Slot 1
+    0,  // Slot 2
+    0,  // Slot 3
+    0,  // Slot 4
+    0,  // Slot 5
+    0,  // Slot 6
+    0,  // Slot 7
+    0   // Slot 8
+];
+
+
+function updateParking() {
+
+    let occupiedCount = 0;
+
+    for (let i = 0; i < 8; i++) {
+
+        let circle = document.getElementById("circle" + (i + 1));
+        let status = document.getElementById("status" + (i + 1));
+
+        if (parkingData[i] == 1) {
+
+            // Occupied
+            circle.style.background = "red";
+            circle.innerHTML = "OCCUPIED";
+
+            status.innerHTML = "Occupied";
+            status.className = "status occupied-text";
+
+            occupiedCount++;
+
+        } else {
+
+            // Empty
+            circle.style.background = "green";
+            circle.innerHTML = "EMPTY";
+
+            status.innerHTML = "Available";
+            status.className = "status empty";
+        }
+    }
+
+    //
