@@ -7,182 +7,188 @@
 <title>Smart Parking</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f7fb;
-    color: #222;
+body{
+    background:#f4f7fb;
+    color:#222;
 }
 
 /* Header */
-header {
-    background: #0d47a1;
-    color: white;
-    padding: 22px;
-    text-align: center;
+.header{
+    background:linear-gradient(135deg,#0879d1,#0056a6);
+    color:white;
+    text-align:center;
+    padding:28px 10px;
 }
 
-header h1 {
-    font-size: 32px;
+.header h1{
+    font-size:32px;
 }
 
-header p {
-    margin-top: 6px;
-    font-size: 15px;
+.header p{
+    margin-top:8px;
+    font-size:15px;
 }
 
 /* Main */
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 25px;
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:25px 15px;
 }
 
-/* Summary */
-.summary {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin-bottom: 30px;
+/* Statistics */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:30px;
 }
 
-.card {
-    background: white;
-    padding: 22px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+.stat{
+    background:white;
+    padding:22px 10px;
+    text-align:center;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
 }
 
-.card h2 {
-    font-size: 16px;
-    margin-bottom: 10px;
-    color: #555;
+.stat h3{
+    font-size:15px;
+    color:#666;
 }
 
-.card .number {
-    font-size: 32px;
-    font-weight: bold;
+.stat p{
+    font-size:30px;
+    font-weight:bold;
+    margin-top:8px;
 }
 
-.total .number {
-    color: #0d47a1;
-}
-
-.occupied .number {
-    color: #e53935;
-}
-
-.available .number {
-    color: #2e7d32;
-}
+.total p{color:#1769aa;}
+.occupied p{color:#e53935;}
+.available p{color:#159447;}
+.booked p{color:#d49b00;}
 
 /* Parking */
-h2.title {
-    text-align: center;
-    margin-bottom: 20px;
+.title{
+    text-align:center;
+    margin-bottom:20px;
+    font-size:25px;
 }
 
-.slots {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+.parking-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
 }
 
-.slot {
-    background: white;
-    padding: 18px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+.slot{
+    background:white;
+    border-radius:15px;
+    padding:20px 10px;
+    text-align:center;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
 }
 
-.slot h3 {
-    margin-bottom: 12px;
+.slot h3{
+    margin-bottom:15px;
 }
 
-/* Circle */
-.circle {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 13px;
-    font-weight: bold;
-    background: green;
+.circle{
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:13px;
+    font-weight:bold;
 }
 
-/* Status */
-.status {
-    margin-top: 12px;
-    font-weight: bold;
+.available-circle{
+    background:#35a853;
 }
 
-.empty {
-    color: green;
+.occupied-circle{
+    background:#e53935;
 }
 
-.occupied-text {
-    color: red;
+.booked-circle{
+    background:#f2b705;
+}
+
+.status{
+    margin-top:12px;
+    font-weight:bold;
+}
+
+.book-btn{
+    margin-top:12px;
+    border:none;
+    padding:9px 18px;
+    border-radius:8px;
+    background:#0879d1;
+    color:white;
+    cursor:pointer;
+}
+
+.book-btn:hover{
+    background:#0056a6;
 }
 
 /* Legend */
-.legend {
-    text-align: center;
-    margin-top: 30px;
-    font-weight: bold;
+.legend{
+    text-align:center;
+    margin-top:30px;
 }
 
-.legend span {
-    margin: 0 12px;
+.legend span{
+    margin:0 10px;
+    font-weight:bold;
 }
 
-.green {
-    color: green;
+.dot{
+    display:inline-block;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    margin-right:5px;
 }
 
-.red {
-    color: red;
-}
+.green{background:#35a853;}
+.red{background:#e53935;}
+.yellow{background:#f2b705;}
 
 /* Footer */
-footer {
-    margin-top: 35px;
-    padding: 18px;
-    text-align: center;
-    background: #0d47a1;
-    color: white;
+.footer{
+    text-align:center;
+    margin-top:30px;
+    padding:20px;
+    color:#777;
+    font-size:14px;
 }
 
 /* Mobile */
-@media (max-width: 700px) {
+@media(max-width:700px){
 
-    .summary {
-        grid-template-columns: 1fr;
+    .stats{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .slots {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+    .parking-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    header h1 {
-        font-size: 25px;
-    }
-
-    .circle {
-        width: 70px;
-        height: 70px;
-        font-size: 11px;
+    .header h1{
+        font-size:25px;
     }
 }
 </style>
@@ -190,154 +196,198 @@ footer {
 
 <body>
 
-<header>
+<!-- HEADER -->
+<div class="header">
     <h1>🚗 SMART PARKING</h1>
     <p>IoT Based Smart Parking System</p>
-</header>
+</div>
 
 <div class="container">
 
-    <!-- Summary -->
-    <div class="summary">
+<!-- STATISTICS -->
+<div class="stats">
 
-        <div class="card total">
-            <h2>Total Parking</h2>
-            <div class="number" id="total">8</div>
-        </div>
-
-        <div class="card occupied">
-            <h2>Occupied</h2>
-            <div class="number" id="occupied">0</div>
-        </div>
-
-        <div class="card available">
-            <h2>Available</h2>
-            <div class="number" id="available">8</div>
-        </div>
-
+    <div class="stat total">
+        <h3>Total Parking</h3>
+        <p id="total">8</p>
     </div>
 
-    <h2 class="title">Parking Slots</h2>
-
-    <!-- Parking Slots -->
-    <div class="slots">
-
-        <div class="slot">
-            <h3>Slot 1</h3>
-            <div class="circle" id="circle1">EMPTY</div>
-            <div class="status empty" id="status1">Available</div>
-        </div>
-
-        <div class="slot">
-            <h3>Slot 2</h3>
-            <div class="circle" id="circle2">EMPTY</div>
-            <div class="status empty" id="status2">Available</div>
-        </div>
-
-        <div class="slot">
-            <h3>Slot 3</h3>
-            <div class="circle" id="circle3">EMPTY</div>
-            <div class="status empty" id="status3">Available</div>
-        </div>
-
-        <div class="slot">
-            <h3>Slot 4</h3>
-            <div class="circle" id="circle4">EMPTY</div>
-            <div class="status empty" id="status4">Available</div>
-        </div>
-
-        <div class="slot">
-            <h3>Slot 5</h3>
-            <div class="circle" id="circle5">EMPTY</div>
-            <div class="status empty" id="status5">Available</div>
-        </div>
-
-        <div class="slot">
-            <h3>Slot 6</h3>
-            <div class="circle" id="circle6">EMPTY</div>
-            <div class="status empty" id="status6">Available</div>
-        </div>
-
-        <div class="slot">
-            <h3>Slot 7</h3>
-            <div class="circle" id="circle7">EMPTY</div>
-            <div class="status empty" id="status7">Available</div>
-        </div>
-
-        <div class="slot">
-            <h3>Slot 8</h3>
-            <div class="circle" id="circle8">EMPTY</div>
-            <div class="status empty" id="status8">Available</div>
-        </div>
-
+    <div class="stat occupied">
+        <h3>Occupied</h3>
+        <p id="occupied">0</p>
     </div>
 
-    <!-- Legend -->
-    <div class="legend">
-        <span class="green">🟢 EMPTY</span>
-        <span class="red">🔴 OCCUPIED</span>
+    <div class="stat available">
+        <h3>Available</h3>
+        <p id="available">8</p>
+    </div>
+
+    <div class="stat booked">
+        <h3>Booked</h3>
+        <p id="booked">0</p>
     </div>
 
 </div>
 
-<footer>
-    Smart Parking System | IoT Project
-</footer>
+<h2 class="title">🅿️ Parking Slots</h2>
 
+<!-- PARKING SLOTS -->
+<div class="parking-grid" id="parkingGrid"></div>
+
+<!-- LEGEND -->
+<div class="legend">
+    <span>
+        <i class="dot green"></i> Available
+    </span>
+
+    <span>
+        <i class="dot red"></i> Occupied
+    </span>
+
+    <span>
+        <i class="dot yellow"></i> Booked
+    </span>
+</div>
+
+<div class="footer">
+    Last Updated: <span id="time">--:--:--</span>
+    <br><br>
+    Smart Parking System | IoT Project
+</div>
+
+</div>
 
 <script>
 
-/*
-   DEMO DATA
-
-   0 = EMPTY
-   1 = OCCUPIED
-
-   Later ESP32/ThingSpeak data
-   will replace this data.
+/* 
+   0 = Available
+   1 = Occupied
+   2 = Booked
 */
 
-let parkingData = [
-    0,  // Slot 1
-    0,  // Slot 2
-    0,  // Slot 3
-    0,  // Slot 4
-    0,  // Slot 5
-    0,  // Slot 6
-    0,  // Slot 7
-    0   // Slot 8
+let parkingStatus = [
+    0,0,0,0,
+    0,0,0,0
 ];
 
+function createSlots(){
 
-function updateParking() {
+    const grid = document.getElementById("parkingGrid");
 
-    let occupiedCount = 0;
+    grid.innerHTML = "";
 
-    for (let i = 0; i < 8; i++) {
+    let occupied = 0;
+    let available = 0;
+    let booked = 0;
 
-        let circle = document.getElementById("circle" + (i + 1));
-        let status = document.getElementById("status" + (i + 1));
+    parkingStatus.forEach((status,index)=>{
 
-        if (parkingData[i] == 1) {
+        let text = "";
+        let circleClass = "";
+        let statusText = "";
 
-            // Occupied
-            circle.style.background = "red";
-            circle.innerHTML = "OCCUPIED";
+        if(status === 0){
 
-            status.innerHTML = "Occupied";
-            status.className = "status occupied-text";
+            text = "EMPTY";
+            circleClass = "available-circle";
+            statusText = "Available";
+            available++;
 
-            occupiedCount++;
-
-        } else {
-
-            // Empty
-            circle.style.background = "green";
-            circle.innerHTML = "EMPTY";
-
-            status.innerHTML = "Available";
-            status.className = "status empty";
         }
-    }
 
-    //
+        else if(status === 1){
+
+            text = "FULL";
+            circleClass = "occupied-circle";
+            statusText = "Occupied";
+            occupied++;
+
+        }
+
+        else{
+
+            text = "BOOKED";
+            circleClass = "booked-circle";
+            statusText = "Booked";
+            booked++;
+
+        }
+
+        grid.innerHTML += `
+            <div class="slot">
+
+                <h3>Slot ${index+1}</h3>
+
+                <div class="circle ${circleClass}">
+                    ${text}
+                </div>
+
+                <div class="status">
+                    ${statusText}
+                </div>
+
+                ${
+                    status === 0
+                    ?
+                    `<button class="book-btn"
+                    onclick="bookSlot(${index})">
+                    Book Slot
+                    </button>`
+                    :
+                    ``
+                }
+
+            </div>
+        `;
+    });
+
+    document.getElementById("total").innerText =
+        parkingStatus.length;
+
+    document.getElementById("occupied").innerText =
+        occupied;
+
+    document.getElementById("available").innerText =
+        available;
+
+    document.getElementById("booked").innerText =
+        booked;
+
+    updateTime();
+}
+
+
+/* BOOK SLOT */
+
+function bookSlot(index){
+
+    if(parkingStatus[index] === 0){
+
+        parkingStatus[index] = 2;
+
+        alert("Slot " + (index+1) + " booked successfully!");
+
+        createSlots();
+    }
+}
+
+
+/* TIME */
+
+function updateTime(){
+
+    let now = new Date();
+
+    document.getElementById("time").innerText =
+        now.toLocaleTimeString();
+}
+
+
+/* LOAD WEBSITE */
+
+createSlots();
+
+</script>
+
+</body>
+</html>
