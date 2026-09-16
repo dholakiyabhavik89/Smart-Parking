@@ -398,17 +398,19 @@ async function updateThingSpeak() {
     const data = await response.json();
     const feed = data.feeds[0];
 
-    for (let i = 1; i <= 8; i++) {
-      const value = Number(feed["field" + i]);
+  // ThingSpeak Field → Website Slot mapping
+const fieldMapping = [8, 1, 2, 3, 4, 5, 6, 7];
 
-      parkingStatus[i - 1] = value;
+for (let i = 0; i < 8; i++) {
 
-      if (value === 1) {
-        parkingStatus[i - 1] = 1;
-      } else {
-        parkingStatus[i - 1] = 0;
-      }
+    const value = Number(feed["field" + fieldMapping[i]]);
+
+    if (value === 1) {
+        parkingStatus[i] = 1;
+    } else {
+        parkingStatus[i] = 0;
     }
+}
 
     createSlots();
 
